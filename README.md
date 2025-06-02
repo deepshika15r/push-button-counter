@@ -41,3 +41,7 @@ The project demonstrates how microcontrollers can read physical inputs, process 
 
 Overall, this project blends interactivity, sensor interfacing, and display technology into a compact and functional embedded system, perfect for educational demonstrations, small-scale prototypes, and beginner-level IoT applications.
 
+#output
+
+![Image](https://github.com/user-attachments/assets/89c62817-77d0-4134-9bcc-e42c2b056867)
+
