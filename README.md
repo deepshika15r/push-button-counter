@@ -13,35 +13,4 @@ DURATION: 4 WEEKS
 MENTOR: NEELA SANTOSH
 
 
-This project is a beginner-friendly embedded systems application that integrates basic user input, environmental sensing, and real-time data display. The project is titled **"Push Button Counter with Temperature Sensor Display on LCD or Serial Monitor"** and is implemented using an **Arduino Uno**, a **DHT11 (or DHT22) temperature sensor**, a **push button**, and a **16x2 LCD display** or the **Arduino Serial Monitor**.
-
-The purpose of this project is two-fold: to allow users to manually count events using a push button, and simultaneously monitor and display the ambient temperature. When the button is pressed, a counter variable is incremented. At the same time, the temperature sensor periodically measures the surrounding temperature. Both values are displayed together, giving the user a simple interactive interface that combines digital input with environmental sensing.
-
-The temperature data is acquired using a **DHT11/DHT22** sensor, which is capable of measuring temperature (and humidity, if needed). The sensor provides temperature data in degrees Celsius and is interfaced with the Arduino using a single digital pin. The data from the sensor is read periodically inside the main loop of the program, ensuring that the display is constantly updated with the latest reading.
-
-For the counting mechanism, a **push button** is connected to a digital pin on the Arduino and configured using internal pull-up resistors. Every time the button is pressed, the program detects a falling edge (transition from HIGH to LOW), increments the count, and introduces a short delay to avoid multiple counts caused by mechanical bouncing (debouncing).
-
-The output of the system is visualized using either a **16x2 LCD display** with an I2C interface or the **Arduino Serial Monitor**. The LCD provides a clear, readable display in real-time and makes the project completely stand-alone. Alternatively, using the Serial Monitor allows for easier debugging and data logging during development. The display shows two lines: the first line for the current temperature (e.g., "Temp: 27.0°C") and the second line for the count (e.g., "Count: 4").
-
-This project is ideal for learning how to:
-
-* Interface sensors and input devices with Arduino.
-* Read and debounce digital inputs.
-* Display dynamic data using an LCD or Serial Monitor.
-* Use libraries such as `DHT.h` for sensor data and `LiquidCrystal_I2C.h` for the LCD.
-
-In terms of real-world applications, this setup can be a prototype for:
-
-* An environmental monitoring system.
-* A people or item counter for controlled environments.
-* Educational tools to teach sensor integration and display techniques.
-* A foundation for building more advanced IoT-based projects.
-
-The project demonstrates how microcontrollers can read physical inputs, process data, and provide human-readable outputs. It’s a stepping stone toward building more complex systems involving multiple sensors and automated feedback.
-
-Overall, this project blends interactivity, sensor interfacing, and display technology into a compact and functional embedded system, perfect for educational demonstrations, small-scale prototypes, and beginner-level IoT applications.
-
-#output
-
-![Image](https://github.com/user-attachments/assets/89c62817-77d0-4134-9bcc-e42c2b056867)
-
+The Push Button Counter project in Wokwi is a beginner-friendly digital electronics simulation that demonstrates how a microcontroller can be used to implement a simple counting system based on user input. In this project, a push button is connected to an Arduino Uno (or similar microcontroller) to increment a 4-bit binary counter. The current value of the counter is displayed either through four LEDs or on the Serial Monitor, offering a clear, visual representation of how digital logic and binary counting work. This project not only teaches basic digital design concepts such as input handling and binary output but also introduces important programming concepts like debouncing, state detection, and bit manipulation. In this setup, each button press is detected using digital input pins, and the count is stored in an integer variable which loops from 0 to 15 (4-bit range). Debouncing is handled through a software delay or logic to ensure only one count is registered per press, avoiding multiple triggers due to the mechanical noise of the button. LEDs are connected to four digital output pins of the Arduino, and bitwise operations are used to extract and display each bit of the current count value, which helps in understanding how binary data is interpreted and output in embedded systems. The project begins by initializing the I/O pins in the Arduino sketch, assigning digital pins for the push button and the LEDs. In the main loop, the program continuously reads the button's state and compares it with the previous state to detect a transition from HIGH to LOW, indicating a valid button press. Upon detection, the counter is incremented and the result is either printed to the Serial Monitor or sent to the LEDs for binary display. A delay is added to prevent button bounce from causing erroneous multiple increments. The Wokwi simulator provides a visual environment where users can easily drag and connect components like push buttons, LEDs, and Arduino boards. This eliminates the need for physical hardware, making the project ideal for remote learning, experimentation, or early-stage prototyping. For advanced users, the project can be extended by adding a second button to decrement the counter, implementing interrupt-based input handling for more accurate response, or using a 7-segment display instead of LEDs for more user-friendly decimal output. This project reinforces foundational knowledge in digital electronics, including the binary number system, microcontroller programming, and circuit simulation, making it perfect for students and hobbyists. Additionally, it fosters logical thinking and problem-solving skills, as users must ensure proper timing, avoid overflow, and manage input/output effectively. The Push Button Counter in Wokwi is not just a technical exercise but a practical gateway into the world of embedded systems, giving users a tangible sense of control over hardware through software. Whether used in an educational setting or as a personal learning project, it provides a solid base to explore more complex systems involving sensors, displays, or serial communication in future projects. Ultimately, it is a simple yet powerful way to understand the intersection of electronics and programming in an interactive and visually rewarding format.
