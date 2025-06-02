@@ -1,0 +1,36 @@
+#include <LiquidCrystal_I2C.h>
+#define LM35 A0
+#define LED 12
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+const float BETA = 3950;
+void setup() 
+{
+  pinMode(LM35, INPUT);
+  pinMode(LED, OUTPUT);
+  lcd.init();
+  lcd.backlight();
+}
+void loop() 
+{
+  int val = analogRead(LM35);
+  float temp = 1 / (log(1 / (1023. / val - 1)) / BETA + 1.0 / 298.15) - 273.15;
+  lcd.setCursor(0, 0);
+  lcd.print("Condition:");
+  if(temp > 25)
+  {
+    lcd.print(" High!");
+    digitalWrite(LED, HIGH);
+  }
+  else if(temp <= 10)
+  {
+    lcd.print("  Low!");
+  }
+  else
+  {
+    lcd.print("Normal");
+  }
+  lcd.setCursor(0, 1);
+  lcd.print("Room Temp: ");
+  lcd.print(temp);
+  delay(100);
+}
