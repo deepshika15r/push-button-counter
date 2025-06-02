@@ -1,36 +1,65 @@
-#include <LiquidCrystal_I2C.h>
-#define LM35 A0
-#define LED 12
-LiquidCrystal_I2C lcd(0x27, 16, 2);
-const float BETA = 3950;
-void setup() 
-{
-  pinMode(LM35, INPUT);
-  pinMode(LED, OUTPUT);
-  lcd.init();
-  lcd.backlight();
+const int  buttonPin = 7; 
+const int  buttonPin1 = 8;     // the pin that the pushbutton is attached to
+const int ledPin = 13;       // the pin that the LED is attached to
+
+// Variables will change:
+int buttonPushCounter = 0;   // counter for the number of button presses
+int buttonState = 0;         // current state of the button
+int lastButtonState = 0;
+int buttonPushCounter1 = 0;   // counter for the number of button presses
+int buttonState1 = 0;         // current state of the button
+int lastButtonState1 = 0;       // previous state of the button
+
+void setup() {
+  // initialize the button pin as a input:
+  pinMode(buttonPin, INPUT);
+   pinMode(buttonPin1, INPUT);
+  // initialize the LED as an output:
+  pinMode(ledPin, OUTPUT);
+  // initialize serial communication:
+  Serial.begin(9600);
 }
-void loop() 
-{
-  int val = analogRead(LM35);
-  float temp = 1 / (log(1 / (1023. / val - 1)) / BETA + 1.0 / 298.15) - 273.15;
-  lcd.setCursor(0, 0);
-  lcd.print("Condition:");
-  if(temp > 25)
-  {
-    lcd.print(" High!");
-    digitalWrite(LED, HIGH);
+
+
+void loop() {
+
+  buttonState = digitalRead(buttonPin);
+    buttonState1 = digitalRead(buttonPin1);
+
+  
+  if (buttonState != lastButtonState) {
+  
+    if (buttonState == HIGH) {
+    
+      buttonPushCounter++;
+      Serial.println(buttonPushCounter);
+    } else {
+     
+   
+    }
+
+    delay(50);
   }
-  else if(temp <= 10)
-  {
-    lcd.print("  Low!");
+ 
+  lastButtonState = buttonState;
+
+  
+  if (buttonState1 != lastButtonState1) {
+  
+    if (buttonState1 == HIGH) {
+    
+      buttonPushCounter--;
+      Serial.println(buttonPushCounter);
+    } else {
+     
+   
+    }
+
+    delay(50);
   }
-  else
-  {
-    lcd.print("Normal");
-  }
-  lcd.setCursor(0, 1);
-  lcd.print("Room Temp: ");
-  lcd.print(temp);
-  delay(100);
+ 
+  lastButtonState1 = buttonState1;
+
+ 
+
 }
